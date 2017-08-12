@@ -19,7 +19,7 @@ var routes = require('./controllers/burgers-controllers.js');
 	
 app.use('/', routes);
 
-var port = process.env.PORT || 3306;
+var port = process.env.PORT || 3000;
 
 app.listen(port, function(req,res){
 	console.log("Port number is: " + port);
