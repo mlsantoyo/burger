@@ -1,53 +1,93 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12 text-center" id="top-bar">
-			<h1>EAT DA BURGER!</h1>
-		</div>
+
 		<div class="row">
-			{{#each burger_data}}
-			{{#unless this.devoured}}
-			<div class="col-xs-9 text-center">
-				<pre>{{this.id}}. {{this.burger_name}}</pre>
-			</div>	
-			<div class="col-xs-3 text-center">
-				<form method="POST" action="/burgers/update?_method=PUT" class="button-size">
-					<input type = "hidden" name="burger_id" type="text" value={{this.id}}>
-					<br>
-					<button type="submit" class="btn btn-default">DEVOUR IT!</button>
-				</form>
-			</div>
-			{{/unless}}
-			{{/each}}	
+			<div class="col-xs-12 text-center" id="bun">
+				<h1>EAT DA BURGER!</h1>
 			</div>
 		</div>
 
-		<div class="col-xs-6 text-center" class="task">
-			{{#each burger_data}}
-				{{#if this.devoured}}
-					<input class="form-control" type="text" placeholder="{{this.id}}. {{this.burger_name}}" readonly>
-				{{/if}}
-			{{/each}}
-		</div>
- 	</div>
-</div>
 
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12 text-center enter_section">
-		<form action="/burgers/create" method="POST">
-		<input type = "text" name="burger_name" class="form-control" value="" id="enter_text">
+
+		<div class="row" id="middle">
+			<div class="col-xs-12 text-center">
+				<img src="/assets/images/cheeseburger.png" alt="burger" class="img-responsive center-block">
+			</div>
+		</div>
+
+
+
+		<div class="row" id="middle">
+			<div class="col-xs-5 text-center">
+				<h3>Ordered Burgers</h3>
+				<ul>
+					{{#each burger_data}}
+					{{#unless this.devoured}}
+
+					<li>
+
+						<h5>{{this.id}}. {{this.burger_name}}
+
+							<form method="POST" action="/burgers/updateOne?_method=PUT" class="button-size">
+								<input type = "hidden" name="burger_id" type="text" value={{this.id}}>
+								<br>
+								<button type="submit" class="btn btn-default">DEVOUR IT!</button>
+							</form>
+						</h5>
+					</li>
+
+					{{/unless}}
+					{{/each}}
+
+				</ul>	
+			</div>
+
+
+
+			<div class="col-xs-2"></div>
+
+
+
+			<div class="col-xs-5 text-center">
+				<h3>Devoured Burgers</h3>
+				<ul>
+					{{#each burger_data}}
+					{{#if this.devoured}}
+
+					<li>
+						<h5>{{this.id}}. {{this.burger_name}}</h5>
+					</li>	
+
+					{{/if}}
+					{{/each}}
+
+				</ul>
+			</div>
+		</div>
+
+
+
+
+
+	<div class="row" id="middle">
+		<div class="col-xs-12 text-center">
+			<form action="/burgers/insertOne" method="POST">
+		<input type = "text" name="burger_name"  value="" id="create">
 		<button type="submit" class="btn btn-primary" id="text-enter-button">SUBMIT</button>
 		</form>
-		<p>Enter a burger you would like to eat!</p>
+			<p><strong>Type in a burger you would like to eat and click the submit button!</strong></p>
 
 		</div>
-
 	</div>
 
-</div>
 
 
 
+	<div class="row">
+		<div class="col-xs-12 text-center" id="bun">
+			<h2>Thanks for dining with us!</h2>
 
 
+		</div>
+	</div>
 
+	</div>
